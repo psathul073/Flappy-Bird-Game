@@ -1,0 +1,374 @@
+:root {
+  --black-color-1: #000;
+  --black-color-2: #301804;
+  --black-color-3: #090909;
+  --white-color-1: #fff;
+  --white-color-2: #faebd7;
+  --white-color-3: #faebd7e6;
+  --orange-color-1: #ea5527;
+  --orange-color-2: #f06a3f;
+  --box-shadow-1: 0px 0px 8px 1px rgba(0, 0, 0, 0.5);
+  --icon-color-1: #121212;
+  --li-color: #622d2de6;
+}
+
+*,
+::before,
+::after {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  list-style: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+  border: none;
+  /* outline: none; */
+}
+html {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--black-color-1);
+  background-color: var(--white-color-2);
+}
+/* Dark Mod Colors */
+body.dark {
+  --orange-color-1: #121212;
+  --white-color-2: #282828;
+  --icon-color-1: #f67e55;
+  --li-color: #f67e55;
+  --black-color-3: var(--orange-color-2);
+}
+/* [Loading The Flappy Bird Fonts In External Source.] */
+@font-face {
+  font-family: flappyBird;
+  src: url(./src/fonts/FlappyBirdy.ttf);
+}
+@font-face {
+  font-family: flappy3D;
+  src: url(./src/fonts/Game\ On_PersonalUseOnly.ttf);
+}
+header {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background-color: var(--orange-color-1);
+  z-index: 1;
+}
+h1 {
+  font-family: flappyBird;
+  font-size: 3rem;
+  color: var(--white-color-1);
+}
+header .settings {
+  color: var(--icon-color-1);
+  transition: all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  font-size: 23px;
+  cursor: pointer;
+}
+header .settings:hover {
+  color: var(--white-color-1);
+  scale: 1.05;
+}
+
+nav {
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  z-index: 2;
+}
+
+nav .dropDown {
+  display: none;
+  position: relative;
+  border-radius: 8px;
+  padding: 5px 10px;
+  background-color: var(--orange-color-1);
+  box-shadow: var(--box-shadow-1);
+  opacity: 0;
+  transition: opacity 450ms ease;
+}
+nav .dropDown li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 40px;
+  border-bottom: 1px solid #0000001c;
+  padding: 5px 5px;
+  margin: 4px 0px;
+  border-radius: 8px;
+  font-family: flappy3D;
+  font-size: 1.3rem;
+  font-weight: 900;
+  color: var(--li-color);
+  background-color: var(--white-color-2);
+  transition: all 450ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+nav .dropDown li:last-child {
+  border-bottom: none;
+}
+nav .dropDown li:hover {
+  background-color: var(--white-color-3);
+  color: var(--black-color-2);
+}
+.game-start {
+  display: block;
+  position: relative;
+  height: 88vh;
+  width: 500px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  background: url(./src/images/bg-1.png);
+  background-position: 0% 0%;
+  background-repeat: repeat-x repeat-y;
+  border-bottom: 30px solid #fbcd8e;
+  transition: animation 500ms ease;
+  /* animation:  backgroundAnimate 20s linear infinite; */
+}
+@keyframes backgroundAnimate {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 100% 0;
+  }
+}
+.game-start h1 {
+  position: relative;
+  transform: translateY(100px);
+  color: var(--white-color-1);
+  font-size: 5rem;
+  z-index: 10;
+}
+.game-start .bird-image {
+  position: relative;
+  transform: translateY(120px);
+  background-color: transparent;
+  z-index: 10;
+  /* animation: upAndDown 5s linear infinite; */
+}
+@keyframes upAndDown {
+  0% {
+    top: 0%;
+    bottom: 0%;
+  }
+  25% {
+    top: 5%;
+  }
+  50% {
+    top: 10%;
+  }
+  75% {
+    top: 5%;
+  }
+  90% {
+    bottom: 8%;
+  }
+  100% {
+    top: 0%;
+  }
+}
+.game-start .start-button {
+  position: relative;
+  width: 100px;
+  height: 40px;
+  transform: translateY(230px);
+  border-radius: 2px;
+  font-family: flappy3D;
+  font-size: 1.5rem;
+  background-color: var(--orange-color-2);
+  color: var(--white-color-1);
+  padding-top: 5px;
+  border: 2px solid var(--black-color-1);
+  border-bottom: 6px solid var(--black-color-1);
+  cursor: pointer;
+}
+.start-button:hover {
+  scale: 1.03;
+  border-bottom: 2px solid var(--black-color-2);
+}
+
+.game-over {
+  display: none;
+  position: absolute;
+  width: 300px;
+  padding: 10px;
+  text-align: center;
+  font-family: flappy3D;
+  line-height: 1.4;
+  background-color: #fbcd8e;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 2px;
+  border: 5px solid #6c513b;
+  box-shadow: var(--box-shadow-1);
+  box-shadow: var(--box-shadow-1) inset;
+  z-index: 3;
+}
+.game-over h1 {
+  font-family: flappy3D;
+  font-size: 2.5rem;
+  color: #6c513b;
+  border-bottom: 2px solid #3a39384d;
+}
+.game-over .scores {
+  color: #322e2a;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+}
+.game-over .restart-button {
+  margin: 10px;
+  width: 100px;
+  height: 35px;
+  background-color: var(--orange-color-2);
+  border: 3px solid #6c513b;
+  font-family: flappy3d;
+  font-size: 1.2rem;
+  padding-top: 5px;
+  color: var(--white-color-1);
+  cursor: pointer;
+}
+.restart-button:hover {
+  scale: 1.05;
+  background-color: #ff4d16;
+}
+canvas {
+  position: absolute;
+  left: 50%;
+  top: 51%;
+  transform: translate(-50%, -50%);
+  height: 88vh;
+  width: 500px;
+  border-bottom: 20px solid #fbcd8e;
+  cursor: pointer;
+}
+#avatar-section {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 290px;
+  width: 280px;
+  z-index: 6;
+}
+#birds-container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: 1fr;
+  padding: 10px;
+  box-shadow: var(--box-shadow-1);
+  background: rgba(250, 250, 250, 0.05);
+  box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  overflow-y: hidden;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+}
+#birds-container::-webkit-scrollbar {
+  height: 13px;
+}
+#birds-container::-webkit-scrollbar-track-piece {
+  background-color: var(--white-color-2);
+  border-radius: 25px;
+  cursor: pointer;
+}
+#birds-container::-webkit-scrollbar-thumb {
+  border-radius: 25px;
+  background-color: var(--black-color-3);
+  cursor: pointer;
+}
+#birds-container .birdAvatar {
+  position: relative;
+  height: 290px;
+  width: 290px;
+  color: transparent;
+  background-size: 200px;
+  background-repeat: no-repeat;
+  background-position: center;
+  scroll-snap-align: center;
+  align-items: center;
+  cursor: pointer;
+}
+.about {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  box-shadow: var(--box-shadow-1);
+  background: rgba(250, 250, 250, 0.05);
+  box-shadow: 1px 1px 15px 1px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 8px;
+  padding: 20px;
+  z-index: 8;
+}
+.about .about-icons {
+  position: absolute;
+  font-size: 1.6rem;
+  right: 0px;
+  color: var(--icon-color-1);
+  cursor: pointer;
+}
+.about h2 {
+  position: relative;
+  font-size: 1.1rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.about details h3 {
+  margin-top: 5px;
+  color: var(--black-color-1);
+  font-size: 1rem;
+}
+.about details p {
+  font-weight: 600;
+  font-size: 0.8rem;
+  color: var(--black-color-2);
+}
+footer {
+  position: absolute;
+  width: 100vw;
+  height: 34px;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 10px;
+  background-color: var(--black-color-3);
+  color: var(--white-color-1);
+  font-size: 14px;
+}
+footer .footer-icon {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 500px) {
+  canvas,
+  .game-start {
+    width: 100vw;
+  }
+}

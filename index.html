@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+    <script src="./game.js"></script>
+    <title>Flappy Bird</title>
+  </head>
+  <body>
+    <header>
+      <h1>Flappy Bird</h1>
+      <div class="settings-icon">
+        <ion-icon class="settings icon" name="settings-outline"></ion-icon>
+      </div>
+      <nav>
+        <div class="dropDown">
+          <ul>
+            <li class="s" id="dark">
+              <span id="dark-text">Dark</span
+              ><ion-icon
+                id="dark-mod"
+                class="icon"
+                name="moon-outline"
+              ></ion-icon>
+            </li>
+            <li class="s" id="birds">
+              Birds <ion-icon class="icon" name="egg-outline"></ion-icon>
+            </li>
+            <li class="s" id="sound">
+              Sound<ion-icon
+                id="sound-icon"
+                class="icon"
+                name="volume-high-outline"
+              ></ion-icon>
+            </li>
+            <li class="s" id="about">
+              About
+              <ion-icon
+                class="icon"
+                name="information-circle-outline"
+              ></ion-icon>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+    <div class="canvas-container"></div>
+    <canvas id="canvas"> </canvas>
+    <!-- [About] -->
+    <div class="about">
+      <h2>
+        About
+        <ion-icon
+          class="about-icons"
+          name="information-circle-outline"
+        ></ion-icon>
+      </h2>
+      <p>Name : Flappy Bird</p>
+      <p>Version: 1.0.0</p>
+      <p>Developer: Athul PS</p>
+      <details>
+        <summary>
+          <h2>
+            Game Controls
+            <ion-icon
+              class="about-icons"
+              name="game-controller-outline"
+            ></ion-icon>
+          </h2>
+        </summary>
+        <h3>⌨ Keyboard</h3>
+        <p><b>Key:</b> "Space"</p>
+        <p><b>Direction:</b> UP Side</p>
+        <h3>🖱 Mouse</h3>
+        <p><b>Click:</b> "Left"</p>
+        <p><b>Direction:</b> Up Side</p>
+        <h3>📱Touch</h3>
+        <p><b>Tap:</b> "Any Place"</p>
+        <p><b>Direction:</b> Up Side</p>
+      </details>
+    </div>
+    <!-- [Bird Avatars] -->
+    <div id="avatar-section">
+      <div id="birds-container"></div>
+    </div>
+    <!--[ Game Start window] -->
+    <div class="game-start">
+      <h1>Flappy Bird</h1>
+      <div class="bird-image">
+        <img src="./src/images/bird-1.png" alt="Bird Image" height="124" />
+      </div>
+      <button class="b start-button">START</button>
+    </div>
+    <!-- [Game Over Window] -->
+    <div class="game-over">
+      <h1>Game Over</h1>
+      <h2>SCORE: <span id="new" class="scores">0</span></h2>
+      <h2>BEST: <span id="old" class="scores">0</span></h2>
+      <button class="restart-button">RESTART</button>
+    </div>
+
+    <footer>
+      <h3>Copyright <span id="date">2024</span></h3>
+      <div class="footer-icon">
+        <ion-icon class="icon" name="logo-instagram"></ion-icon>
+        <ion-icon class="icon" name="logo-github"></ion-icon>
+      </div>
+    </footer>
+  </body>
+</html>
