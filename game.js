@@ -586,7 +586,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return false;
   }
 
-  // Key On Pressing.
+  // Keyboard Controls
+  // Click "Space" Key.
   window.addEventListener("keydown", (ev) => {
     if (ev.code === "Space" || (ev.key === "" && gameResume && start)) {
       ev.preventDefault(); // Prevent the default action to avoid triggering other buttons.
@@ -598,7 +599,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Key On Releasing.
+  // Releasing "Space" Key.
   window.addEventListener("keyup", (ev) => {
     if (ev.code == "Space" || (ev.key === "" && gameResume && start)) {
       ev.preventDefault(); // Prevent the default action to avoid triggering other buttons.
@@ -607,6 +608,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // Mouse Control.
   // Update Bird Positions On Clicks.
   window.addEventListener("mousedown", (e) => {
     if (e.target.id === "canvas" && gameResume && start) {
@@ -624,6 +626,26 @@ document.addEventListener("DOMContentLoaded", () => {
       flappyBird.image.src = birdAvatarImg; // Set current bird avatar.
     }
   });
+
+// Touch Control.
+window.addEventListener("touchstart", (e) => {
+  if (e.target.id === "canvas" && gameResume && start) {
+    birdUp(-0.2);
+    flappyBird.image.src = birdAvatarImg; // Set current bird avatar.
+    // Check The Sound Mute Status.
+    if (soundMute && start) {
+      flyingSound.play(); // bird flaying sound.
+    }
+  }
+  
+});
+
+window.addEventListener("touchend", () => {
+  if (gameResume && start) {
+    birdUp(0.1);
+    flappyBird.image.src = birdAvatarImg; // Set current bird avatar.
+  }
+});
 
   // Bird Position Up $Fun.
   function birdUp(up) {

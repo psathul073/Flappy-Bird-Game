@@ -56,12 +56,13 @@ body.dark {
 }
 header {
   display: flex;
+  position: relative;
   width: 100vw;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 10px;
+  padding: 6px 10px;
   background-color: var(--orange-color-1);
-  z-index: 1;
+  z-index: 2;
 }
 h1 {
   font-family: flappyBird;
@@ -83,7 +84,7 @@ nav {
   position: absolute;
   right: 10px;
   top: 40px;
-  z-index: 2;
+  z-index: 3;
 }
 
 nav .dropDown {
@@ -94,6 +95,7 @@ nav .dropDown {
   background-color: var(--orange-color-1);
   box-shadow: var(--box-shadow-1);
   opacity: 0;
+  z-index: 4;
   transition: opacity 450ms ease;
 }
 nav .dropDown li {
@@ -122,18 +124,19 @@ nav .dropDown li:hover {
 }
 .game-start {
   display: block;
-  position: relative;
-  height: 88vh;
+  position: absolute;
+  height: 100vh;
   width: 500px;
   left: 50%;
-  transform: translateX(-50%);
+  top: 50%;
+  transform: translate(-50%, -50%);
   text-align: center;
-  background: url(./src/images/bg-1.png);
-  background-position: 0% 0%;
-  background-repeat: repeat-x repeat-y;
+  background-image: url(./src/images/bg-1.png);
+  background-size: cover;
   border-bottom: 30px solid #fbcd8e;
   transition: animation 500ms ease;
-  /* animation:  backgroundAnimate 20s linear infinite; */
+  z-index: 1;
+  animation:  backgroundAnimate 20s linear infinite;
 }
 @keyframes backgroundAnimate {
   from {
@@ -145,17 +148,19 @@ nav .dropDown li:hover {
 }
 .game-start h1 {
   position: relative;
-  transform: translateY(100px);
+  top: 20%;
+  transform: translateY(50%);
   color: var(--white-color-1);
   font-size: 5rem;
   z-index: 10;
 }
 .game-start .bird-image {
   position: relative;
-  transform: translateY(120px);
+  top: 40%;
+  transform: translateY(150%);
   background-color: transparent;
   z-index: 10;
-  /* animation: upAndDown 5s linear infinite; */
+  animation: upAndDown 5s linear infinite;
 }
 @keyframes upAndDown {
   0% {
@@ -182,7 +187,8 @@ nav .dropDown li:hover {
   position: relative;
   width: 100px;
   height: 40px;
-  transform: translateY(230px);
+  top: 40%;
+  transform: translateY(50%);
   border-radius: 2px;
   font-family: flappy3D;
   font-size: 1.5rem;
@@ -246,9 +252,9 @@ nav .dropDown li:hover {
 canvas {
   position: absolute;
   left: 50%;
-  top: 51%;
+  top: 50%;
   transform: translate(-50%, -50%);
-  height: 88vh;
+  height: 85vh;
   width: 500px;
   border-bottom: 20px solid #fbcd8e;
   cursor: pointer;
@@ -281,7 +287,7 @@ canvas {
   overflow-y: hidden;
   overflow-x: scroll;
   scroll-behavior: smooth;
-  scroll-snap-type: x proximity;
+  scroll-snap-type: x mandatory;
 }
 #birds-container::-webkit-scrollbar {
   height: 13px;
@@ -358,6 +364,7 @@ footer {
   background-color: var(--black-color-3);
   color: var(--white-color-1);
   font-size: 14px;
+  z-index: 5;
 }
 footer .footer-icon {
   display: flex;
