@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  console.clear();
+  // console.clear();
   // DOM Elements Selections.
   const dropDown = document.querySelector("nav .dropDown"); // Dropdown menu.
   const canvas = document.getElementById("canvas"); // Canvas element.
@@ -64,9 +64,18 @@ document.addEventListener("DOMContentLoaded", () => {
   flappyBird = {
     image: new Image(),
   };
+
   // Set Avatar Image On Window Load.
   let birdAvatarImg = localStorage.getItem("birdAvatarImg");
-  flappyBird.image.src = birdAvatarImg;
+
+  // If Check Items(bird avatars) does Exist In Local storage.
+  if (localStorage.getItem("birdAvatarImg") === null) {
+    // Add Default Avatar.
+    birdAvatarImg = "./src/images/bird-0.png";
+  } else {
+    // Add Locally Stored Avatars.
+    flappyBird.image.src = birdAvatarImg;
+  }
   // Avatar Status.
   let avatarStatus = true;
   // Bird Y Position.
@@ -627,25 +636,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-// Touch Control.
-window.addEventListener("touchstart", (e) => {
-  if (e.target.id === "canvas" && gameResume && start) {
-    birdUp(-0.2);
-    flappyBird.image.src = birdAvatarImg; // Set current bird avatar.
-    // Check The Sound Mute Status.
-    if (soundMute && start) {
-      flyingSound.play(); // bird flaying sound.
+  // Touch Control.
+  window.addEventListener("touchstart", (e) => {
+    if (e.target.id === "canvas" && gameResume && start) {
+      birdUp(-0.2);
+      flappyBird.image.src = birdAvatarImg; // Set current bird avatar.
+      // Check The Sound Mute Status.
+      if (soundMute && start) {
+        flyingSound.play(); // bird flaying sound.
+      }
     }
-  }
-  
-});
+  });
 
-window.addEventListener("touchend", () => {
-  if (gameResume && start) {
-    birdUp(0.1);
-    flappyBird.image.src = birdAvatarImg; // Set current bird avatar.
-  }
-});
+  window.addEventListener("touchend", () => {
+    if (gameResume && start) {
+      birdUp(0.1);
+      flappyBird.image.src = birdAvatarImg; // Set current bird avatar.
+    }
+  });
 
   // Bird Position Up $Fun.
   function birdUp(up) {
