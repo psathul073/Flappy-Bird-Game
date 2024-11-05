@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const birdsBtn = document.getElementById("birds"); // Birds avatar show button.
   const aboutBtn = document.getElementById("about"); // About Button.
   let aboutDisplay = document.querySelector(".about"); // About content display.
+  const date = document.getElementById("date"); // Date.
 
   let width = canvas.offsetWidth; // Canvas Width.
   let height = canvas.clientHeight; // Canvas Height.
@@ -700,6 +701,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   }
+  // Add Footer Automatic Dates.
+  date.innerText = new Date().getFullYear();
 
   birdAvatars();
   gameStart();
